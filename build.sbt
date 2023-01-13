@@ -264,10 +264,10 @@ lazy val mqtt = projectMatrix
     Compile / allowedNamespaces := Seq(
       "smithy.mqtt"
     ),
+    Test / sourceGenerators := Seq(genSmithyScala(Test).taskValue),
     Test / smithySpecs := Seq(
       (ThisBuild / baseDirectory).value / "sampleSpecs" / "mqtt.smithy"
     ),
-    genSmithy(Compile)
   )
   .jvmPlatform(latest2ScalaVersions, jvmDimSettings)
   .jsPlatform(
